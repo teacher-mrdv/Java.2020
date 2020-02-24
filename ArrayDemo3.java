@@ -2,7 +2,7 @@
  * This class creates and manipulates a list
  * using an array of Strings
  * Focus: Sequential search, advanced array manipulation
- * v0.1 MDV
+ * v0.3 MDV
  * 
  */
 import java.util.*;
