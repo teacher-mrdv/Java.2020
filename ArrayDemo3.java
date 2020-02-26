@@ -86,9 +86,9 @@ public class ArrayDemo3
 			return null;
 		}
 		String removed = names[index];
-		for(int i = index; i < names.length-1; i++)
-		{	
-		//names[index] = null;
+//		for(int i = index; i < names.length-1; i++)
+//		{	
+		names[index] = null;
 		//printArray(); // optional
 		counter--;
 		return removed;
