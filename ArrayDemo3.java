@@ -24,7 +24,7 @@ public class ArrayDemo3
 		return counter == 0;
 	}
 	
-	// NOT efficient & counter cannot be used as index of next name to add
+	// FLEXIBLE, but NOT efficient & counter cannot be used as index of next name to add
 	// this inserts a name in the first null index found in the array
 	public static boolean insert(String name)
 	{
