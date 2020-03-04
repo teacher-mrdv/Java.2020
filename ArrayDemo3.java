@@ -42,14 +42,16 @@ public class ArrayDemo3
 	
 	// prints the POPULATED elements of the array (provided counter is used & updated correctly, of course
 	public static void printArray()
-	{	if( isEmpty() )
+	{	/*
+		if( isEmpty() )
 		{	System.out.println("Array empty");
 			return;
 		}
-		//System.out.println("\n[INDEX: Name]");
+		System.out.println("\n[INDEX: Name]");
+		*/
 		for(int i = 0; i < names.length; i++) // traversal
 		{
-			if(names[i] != null)
+			//if(names[i] != null)
 			{	System.out.print(i + ": " + names[i]);
 			}
 			if(i < names.length-1)
