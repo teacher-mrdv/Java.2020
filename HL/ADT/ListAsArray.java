@@ -1,6 +1,6 @@
 public class ListAsArray
 {
-	public static final int SIZE = 5;
+	public static final int SIZE = 10;
 	public static String[] list = new String[SIZE];
 	public static int end = 0;
 	
@@ -29,10 +29,9 @@ public class ListAsArray
 		{	return null;
 		}
 		String out = list[index];
-		if(index == list.length-1) // check if removing last element
-		{	list[index] = null;
-			end--;
-		} else {
+		if(index == list.length-1)	// check if removing last element
+		{	list[index] = null;		// because it's the easiest to do
+		} else {	// otherwise, move all elements after index to remove 1 slot up
 			int i;
 			for(i = index; i < list.length-1; i++)
 			{	list[i] = list[i+1];
@@ -64,11 +63,14 @@ public class ListAsArray
 		System.out.println();
 	}
 	
+	/******* HOMEWORK ******************************************************/
 	// create an insert method: isFull? is index==null? copy down & insert
+	// return true if the insertion was successful, false otherwise
 	public static boolean insert(String s)
 	{	// replace and add your code here
 		return false;
 	}
+	/******* HOMEWORK ******************************************************/
 	
 	// prints end + whole array contents 
 	public static void printArray() 
@@ -88,7 +90,7 @@ public class ListAsArray
 		printList();
 		append("Anakin"); printList();
 		append("Lilith"); printList();
-		append("Grace"); printList();
+		append("Padme"); printList();
 		append("Ben"); printList();
 		append("Yoda"); printList();
 		String extra = "Adam";
@@ -104,10 +106,18 @@ public class ListAsArray
 		}
 		System.out.println("\nRemoving index 4");
 		remove(4); printList();
+		append("Leia"); printList();
 		System.out.println("Removing index 1");
 		remove(1); printList();
+		append("Lando"); printList();
 		
-		// play with the list until you understand how it works! append, remove, and insert elements. Just remember to call printList() after each operation so that you can see how the array (list) changes
+		/*** HW *** play with the list until you understand how it works!
+		 * append, remove, and insert elements. Just remember to call printList()
+		 * after each operation so that you can see how the array (list) changes.
+		 * Finally, add 3 calls to the insert method:
+		 * 		insert names at indices 0, 3 and 9.
+		 * Correct any errors you find as you test this code.
+		 ***/
 	}
 }
 
