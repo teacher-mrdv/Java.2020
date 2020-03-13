@@ -66,9 +66,20 @@ public class ListAsArray
 	/******* HOMEWORK ******************************************************/
 	// create an insert method: isFull? is index==null? copy down & insert
 	// return true if the insertion was successful, false otherwise
-	public static boolean insert(String s)
-	{	// replace and add your code here
-		return false;
+	public static boolean insert(int index, String s)
+	{	
+		if( isFull() || index < 0 || index > end ) // range validation
+		{	return false;
+		}
+		if(index == end)	// inserting at the end of the list
+		{	return append(s);
+		}
+		end++;				// inserting anywhere else in the list
+		for(int i = end - 1; i > index; i--)
+		{	list[i] = list[i - 1];
+		}
+		list[index] = s;
+		return true;
 	}
 	/******* HOMEWORK ******************************************************/
 	
@@ -99,17 +110,34 @@ public class ListAsArray
 		} else {
 			System.out.printf("Error appending %s to list\n", extra);
 		}
-		if(remove(5) == null)
+		String deleted = remove(5);
+		if(deleted == null)
 		{	System.out.println("Removal (5) unsuccessful");
 		} else {
+			System.out.println("Removing index 5: " + deleted);
 			printList();
 		}
-		System.out.println("\nRemoving index 4");
-		remove(4); printList();
+		System.out.print("\nRemoving index 4: ");
+		System.out.println(remove(4));
+		printList();
+		System.out.println("adding Leia");
 		append("Leia"); printList();
-		System.out.println("Removing index 1");
-		remove(1); printList();
+		System.out.println("Removing index 1: " + remove(1) );
+		printList();
+		System.out.println("adding Lando");
 		append("Lando"); printList();
+		System.out.println("inserting Chewbacca @ 5");
+		insert(5, "Chewbacca"); printList();
+		System.out.println("inserting Obi Wan @ 0");
+		insert(0, "Obi Wan"); printList();
+		System.out.println("inserting Rey @ 3");
+		insert(3, "Rey"); printList();
+		append("BB8");
+		append("R2D2");
+		printArray();
+		System.out.println("inserting Vader @ 9");
+		System.out.println(insert(9, "Vader")); printList();
+		
 		
 		/*** HW *** play with the list until you understand how it works!
 		 * append, remove, and insert elements. Just remember to call printList()

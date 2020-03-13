@@ -25,6 +25,7 @@ public class Array1
 			array[left] = array[right];
 			array[right] = temp;
 			left++;
+			//printArray(array);
 		}
 	}
 	
