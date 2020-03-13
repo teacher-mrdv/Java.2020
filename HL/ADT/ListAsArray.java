@@ -63,7 +63,7 @@ public class ListAsArray
 		System.out.println();
 	}
 	
-	/******* HOMEWORK ******************************************************/
+	/******* HOMEWORK: ******************************************************/
 	// create an insert method: isFull? is index==null? copy down & insert
 	// return true if the insertion was successful, false otherwise
 	public static boolean insert(int index, String s)
