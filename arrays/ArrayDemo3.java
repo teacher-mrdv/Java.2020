@@ -2,7 +2,7 @@
  * This class creates and manipulates a list
  * using an array of Strings
  * Focus: Sequential search, advanced array manipulation
- * v0.3 MDV
+ * v0.9 MDV
  * 
  */
 import java.util.*;
@@ -42,34 +42,56 @@ public class ArrayDemo3
 	
 	// replace all nulls with elements existing in the array
 	// move up
-	public static void pack(String [] array)
-	{
-		// your code
+	public static void pack(String[] a)
+	{	int empties = 0;
+		for(int i = 0; i < a.length-1; i++)
+		{	if(a[i] == null)
+			{	empties++;
+				for(int j = i; j < a.length-1; j++)
+				{	a[j] = a[j+1];
+				}
+				System.out.print(">>>"); printArray(a);
+			}
+			
+		}
+		for(int i = a.length-1; i > a.length-1-empties; i--)
+		{	a[i] = null;
+		}
 	}
 	
 	// insert an element at any index, make space for it in the array
 	// if array is not full (move elements down)
 	public static boolean insertAt(int index, String s)
 	{
-		// your code
+		if( isFull() || index < 0 || index >= names.length ) // range validation
+		{	return false;
+		}
+		if(names[index] == null)	// inserting at the end of the list
+		{	names[index] = s;
+			return true;
+		}
+		counter++;				// inserting anywhere else in the list
+		for(int i = names.length - 1; i > index; i--)
+		{	names[i] = names[i - 1];
+		}
+		names[index] = s;
 		return true;
 	}
 	
 	// prints the POPULATED elements of the array (provided counter is used & updated correctly, of course
-	public static void printArray()
-	{	/*
+	public static void printArray(String[] a)
+	{
 		if( isEmpty() )
 		{	System.out.println("Array empty");
 			return;
 		}
-		System.out.println("\n[INDEX: Name]");
-		*/
-		for(int i = 0; i < names.length; i++) // traversal
+	
+		for(int i = 0; i < a.length; i++) // traversal
 		{
-			//if(names[i] != null)
-			{	System.out.print(i + ": " + names[i]);
+			//if(a[i] != null)
+			{	System.out.printf("%2d: %-10s", i, a[i]);
 			}
-			if(i < names.length-1)
+			if(i < a.length-1)
 			{
 				System.out.print(" | ");
 			} else {
@@ -77,11 +99,6 @@ public class ArrayDemo3
 			}
 		}
 		System.out.println();
-		/*
-		for(String s : names) // enhanced for loop
-		{	System.out.println(s); // print each element of the array, including NULLs
-		}
-		*/
 	}
 	
 	// prints ONE element of the array, the one at the given valid index within the array bounds
@@ -103,8 +120,6 @@ public class ArrayDemo3
 			return null;
 		}
 		String removed = names[index];
-//		for(int i = index; i < names.length-1; i++)
-//		{	
 		names[index] = null;
 		//printArray(); // optional
 		counter--;
@@ -153,22 +168,31 @@ public class ArrayDemo3
 	
 	public static void main (String[] args)
 	{
-		printArray();
-		insert("Barry"); printArray();
-		insert("Diana"); printArray();
-		insert("J'onn"); printArray();
-		insert("Bruce"); printArray();
-		insert("Clark"); printArray();
-		insert("Ray Palmer"); printArray();
-		insert("Victor"); printArray();
-		insert("Hal"); printArray();
-		insert("Gleek"); printArray();
+		printArray(names);
+		insert("Barry"); printArray(names);
+		insert("Diana"); printArray(names);
+		insert("J'onn"); printArray(names);
+		insert("Bruce"); printArray(names);
+		insert("Clark"); printArray(names);
+		insert("Ray Palmer"); printArray(names);
+		insert("Victor"); printArray(names);
+		insert("Hal"); printArray(names);
+		insert("Gleek"); printArray(names);
 		
-		removeAt(5);
-		printArray();
-		insert("Kyle");
-		printArray();
+		System.out.println("Removing @5: " + removeAt(5) );
+		printArray(names);
+		System.out.println("Inerting Kyle: " + insert("Kyle") );
+		printArray(names);
+		System.out.println("Inserting Starfire @0: " + insertAt(0, "Starfire") );
+		printArray(names);
+		System.out.println("Removing @3, @5, @8, @9");
+		removeAt(3); removeAt(5); removeAt(8); removeAt(9);
+		printArray(names);
+		System.out.println("Inserting Oracle @2: " + insertAt(2, "Oracle") );
+		insertAt(9, "Osterman"); printArray(names);
+		System.out.println("Packing array");
 		
+		pack(names); printArray(names);
 	}
 }
 
