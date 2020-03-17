@@ -8,7 +8,7 @@
  */
 import java.util.*;
 
-public class ArrayDemo3
+public class UnorderedList
 {
 	public static final int SIZE = 10; // global constant, max. size of the array
 	 // global variables
