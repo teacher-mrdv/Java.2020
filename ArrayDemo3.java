@@ -40,6 +40,21 @@ public class ArrayDemo3
 		return false; // end of array reached, insert failed
 	}
 	
+	// replace all nulls with elements existing in the array
+	// move up
+	public static void pack(String [] array)
+	{
+		// your code
+	}
+	
+	// insert an element at any index, make space for it in the array
+	// if array is not full (move elements down)
+	public static boolean insertAt(int index, String s)
+	{
+		// your code
+		return true;
+	}
+	
 	// prints the POPULATED elements of the array (provided counter is used & updated correctly, of course
 	public static void printArray()
 	{	/*
