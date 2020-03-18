@@ -170,7 +170,7 @@ public class UnorderedList
 		
 		System.out.println("Removing @5: " + removeAt(5) );
 		printArray(names);
-		System.out.println("Inerting Kyle: " + insert("Kyle") );
+		System.out.println("Inserting Kyle: " + insert("Kyle") );
 		printArray(names);
 		System.out.println("Inserting Starfire: " + insert("Starfire") );
 		System.out.println("Inserting Osterman: " + insert("Osterman") );

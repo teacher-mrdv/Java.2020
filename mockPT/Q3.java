@@ -11,11 +11,11 @@ public class Q3 // revision for Q3 array test
 	
 	public static void printArray(int[] array, int z)
 	{	if(z < 0 || z >array.length)
-		{	for(int i = 0; i < array.length; i++)
+		{	System.out.println("Nothing to print");
+		} else
+		{	for(int i = 0; i < z; i++)
 			{	System.out.println(array[i] + "  ");
 			}
-		} else
-		{	System.out.println("Nothing to print");
 		}
 	}
 		
