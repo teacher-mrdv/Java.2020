@@ -96,11 +96,11 @@ public class SortingSkeleton
 		array = clone(original);
 		simpleInsertion( array );
 		printArray(array);
-
+/*
 		System.out.println("\nInsertion sort");
 		array = clone(original);
 		insertion( array );
 		printArray(array);
-
+*/
 	}
 }
