@@ -29,10 +29,10 @@ public class Stack
 	}
 	
 	public void print()
-	{	Node temp = top;
+	{	Node temp = top; // we use a temp node to avoid popping
 		System.out.println( "Top" );
 		while( temp != null)
-		{	System.out.println( temp.data );
+		{	System.out.println( "   " + temp.data );
 			temp = temp.next;
 		}
 		System.out.println( );
