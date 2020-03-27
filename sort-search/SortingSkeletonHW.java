@@ -32,12 +32,29 @@ public class SortingSkeletonHW
 
 	static void bubble(int[] a)
 	{
-		// your code goes here - sort the array a using bubble sort
+		int counter = 0;
+		boolean swapped = true;
+		int lastElement = a.length;
+		while(swapped)
+		{
+			swapped = false;
+			for(int i = 0; i < lastElement-1; i++)
+			{	if(a[i] > a[i+1])
+				{	int temp = a[i];
+					a[i] = a[i+1];
+					a[i+1] = temp;
+					swapped = true;
+					counter++;
+				}
+			}
+			lastElement--;
+		}
+		System.out.println(counter);
 	}
 
 	public static void selection(int[] a)
 	{
-		// your code goes here - sort the array a using selection sort
+
 	}
 
 	// https://youtu.be/JU767SDMDvA
