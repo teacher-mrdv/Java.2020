@@ -1,4 +1,12 @@
-// (base class)
+/*
+ * Stack
+ * (base class) - no main method to keep it clean
+ * the purpose of base/entity classes is to DEFINE an <object>
+ * here, we define what a Stack IS (a Node called top)
+ * and what a Stack can do (push, pop, isEmpty, print)
+ * 
+ */
+
 public class Stack
 {
 	Node top = null;
