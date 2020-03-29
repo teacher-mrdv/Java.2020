@@ -45,11 +45,15 @@ public class SortingSkeletonHW
 					a[i+1] = temp;
 					swapped = true;
 					counter++;
+					
+					System.out.print(">>> ");
+					printArray(a);
 				}
 			}
 			lastElement--;
 		}
-		System.out.println(counter);
+		
+		System.out.println(counter +" swaps to sort " + a.length + " elements.");
 	}
 
 	public static void selection(int[] a)
