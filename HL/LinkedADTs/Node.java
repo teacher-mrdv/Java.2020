@@ -4,6 +4,6 @@ public class Node
 	Node	next;  // this is NULL by default
 	
 
-	
+
 }
 

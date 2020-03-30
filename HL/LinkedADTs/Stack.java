@@ -9,7 +9,8 @@
 
 public class Stack
 {
-	Node top = null;
+	Node top = null; // top.data = unused; top to refer to/point at the top of the stack
+					// top.next  = refers to/points to the node after the top node
 	
 	public boolean isEmpty()
 	{	return top == null;
@@ -29,10 +30,10 @@ public class Stack
 	public int pop()
 	{	if(isEmpty())
 		{	System.out.println( "Stack empty" );
-			return 0;
+			return 0; // rogue value
 		}
-		int e	= top.data;
-		top		= top.next;
+		int e	= top.data; // save data to return it later
+		top		= top.next; // move the top to the next node in the stack
 		return e;
 	}
 	

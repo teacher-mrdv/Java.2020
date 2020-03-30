@@ -31,6 +31,7 @@ public class StackTest
 		}
 		
 		stack2.print();
+		//System.out.println("\n\n" + stack2.top.data);
 	}
 	
 }
