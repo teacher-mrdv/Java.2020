@@ -30,12 +30,12 @@ public class SortingSkeletonHW
 		return copy;
 	}
 
-	static void bubble(int[] a // optimised bubble sort (there are other 2 less optimised versions)
+	static void bubble(int[] a) // optimised bubble sort (there are other 2 less optimised versions)
 	{
 		int counter = 0; // count the number of swaps made
 		boolean swapped = true;
 		int lastElement = a.length;
-		while(swapped) // outer loop
+		while(swapped == true) // outer loop
 		{
 			swapped = false; // assumes no swaps made
 			for(int i = 0; i < lastElement-1; i++) // inner loop
@@ -57,8 +57,24 @@ public class SortingSkeletonHW
 	}
 
 	public static void selection(int[] a)
-	{
-		
+	{	int counter = 0;
+		int small_index;
+		for(int i = 0; i < a.length; i++)
+		{	small_index = i;
+			for(int j = i+1; j < a.length; j++) // looks for the smallest unsorted element
+			{	if( a[j] < a[small_index] )
+				{	small_index = j;			// update the index of ^^^^^^^^^^^^^^^^^^^
+				}
+			}
+			int temp = a[i];
+			a[i] = a[small_index];
+			a[small_index] = temp;
+			
+			System.out.print(">>> "); // shows you each swap made
+			printArray(a); // shows the array as we sort
+			counter++;
+		}
+		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
 
 	// https://youtu.be/JU767SDMDvA
@@ -76,7 +92,7 @@ public class SortingSkeletonHW
 	// No need to modify the main method.
 	public static void main(String[] args)
 	{
-		int[] original = { 7,9,6,8,1,3,5,2,4 };
+		int[] original = { 7,9,6,8,1,3,5,2,4,3 };
 		//int[] original = { 9,8,7,6,5,4,3,2,1 };
 		int[] array = clone(original);
 		System.out.println("Original array");
@@ -89,6 +105,7 @@ public class SortingSkeletonHW
 
 		System.out.println("\nSelection sort");
 		array = clone(original);
+		printArray(original);
 		selection( array );
 		printArray(array);
 
