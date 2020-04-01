@@ -33,7 +33,7 @@ public class SortingSkeletonHW
 	static void bubble(int[] a) // optimised bubble sort (there are other 2 less optimised versions)
 	{
 		int counter = 0; // count the number of swaps made
-		boolean swapped = true;
+		boolean swapped = true; // this is called a FLAG
 		int lastElement = a.length;
 		while(swapped == true) // outer loop
 		{
@@ -62,8 +62,8 @@ public class SortingSkeletonHW
 		for(int i = 0; i < a.length; i++)
 		{	small_index = i;
 			for(int j = i+1; j < a.length; j++) // looks for the smallest unsorted element
-			{	if( a[j] < a[small_index] )
-				{	small_index = j;			// update the index of ^^^^^^^^^^^^^^^^^^^
+			{	if( a[j] < a[small_index] )		// check for a smaller element and 
+				{	small_index = j;			// change the index of smallest unsorted element
 				}
 			}
 			int temp = a[i];
@@ -92,8 +92,8 @@ public class SortingSkeletonHW
 	// No need to modify the main method.
 	public static void main(String[] args)
 	{
-		int[] original = { 7,9,6,8,1,3,5,2,4 };
-		//int[] original = { 9,8,7,6,5,4,3,2,1 };
+		//int[] original = { 7,9,6,8,1,3,5,2,4 };
+		int[] original = { 9,8,7,6,5,4,3,2,1,0 };
 		int[] array = clone(original);
 		System.out.println("Original array");
 		printArray(original);
