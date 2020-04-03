@@ -12,7 +12,7 @@ public class StackTest
 {
 	
 	public static void main(String[] args)
-	{	//
+	{	
 		Stack stack1 = new Stack();
 		Scanner input = new Scanner(System.in);
 		int n;
@@ -30,6 +30,8 @@ public class StackTest
 		{	stack2.push( stack1.pop() );
 		}
 		
+		System.out.println("Top of the stack is: " + stack1.peek() + "\n");
+		System.out.println("Top of the stack is: " + stack2.peek() + "\n");
 		stack2.print();
 		//System.out.println("\n\n" + stack2.top.data);
 	}

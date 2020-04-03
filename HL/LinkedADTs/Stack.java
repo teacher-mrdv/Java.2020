@@ -37,6 +37,14 @@ public class Stack
 		return e;
 	}
 	
+	public int peek()
+	{	if(isEmpty())
+		{	System.out.println("Stack empty");
+			return 0;
+		}
+		return top.data;
+	}
+	
 	public void print()
 	{	Node temp = top; // we use a temp node to avoid popping
 		System.out.println( "Top" );

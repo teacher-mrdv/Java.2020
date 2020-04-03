@@ -35,7 +35,7 @@ public class SortingSkeletonHW
 		int counter = 0; // count the number of swaps made
 		boolean swapped = true; // this is called a FLAG
 		int lastElement = a.length;
-		while(swapped == true) // outer loop
+		for(int c = 0; c < a.length; c++)
 		{
 			swapped = false; // assumes no swaps made
 			for(int i = 0; i < lastElement-1; i++) // inner loop
@@ -77,6 +77,27 @@ public class SortingSkeletonHW
 		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
 
+	public static void selection2(int[] a)
+	{	int counter = 0;
+		int small_index;
+		for(int i = 0; i < a.length; i++)
+		{	small_index = i;
+			for(int j = i+1; j < a.length; j++) // looks for the smallest unsorted element
+			{	if( a[j] < a[small_index] )		// check for a smaller element and 
+				{	small_index = j;			// change the index of smallest unsorted element
+				}
+			}
+			int temp = a[i];
+			a[i] = a[small_index];
+			a[small_index] = temp;
+			
+			System.out.print(">>> "); // shows you each swap made
+			printArray(a); // shows the array as we sort
+			counter++;
+		}
+		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
+	}
+
 	// https://youtu.be/JU767SDMDvA
 	public static void simpleInsertion(int[] a)
 	{
@@ -92,8 +113,9 @@ public class SortingSkeletonHW
 	// No need to modify the main method.
 	public static void main(String[] args)
 	{
-		//int[] original = { 7,9,6,8,1,3,5,2,4 };
-		int[] original = { 9,8,7,6,5,4,3,2,1,0 };
+		int[] original = { 7,9,6,8,1,3,5,2,4 };
+		//int[] original = { 9,8,7,6,5,4,3,2,1,0 };
+		//int[] original = { 1,2,3,4,5,6,7,8,9,10 };
 		int[] array = clone(original);
 		System.out.println("Original array");
 		printArray(original);
@@ -107,6 +129,12 @@ public class SortingSkeletonHW
 		array = clone(original);
 		printArray(original);
 		selection( array );
+		printArray(array);
+
+		System.out.println("\nMy Selection sort");
+		array = clone(original);
+		printArray(original);
+		selection2( array );
 		printArray(array);
 
 		System.out.println("\nSimple Insertion sort");
