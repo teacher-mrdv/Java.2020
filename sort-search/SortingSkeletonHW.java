@@ -100,8 +100,22 @@ public class SortingSkeletonHW
 
 	// https://youtu.be/JU767SDMDvA
 	public static void simpleInsertion(int[] a)
-	{
-		// your code goes here - sort the array a using insertion sort
+	{	int counter = 0;
+		for(int i = 1; i < a.length; i++)
+		{	int j = i;
+			while(j > 0 && a[j-1] > a[j]) // loop until the element is in its right place
+			{	int temp = a[j];	//swap elements to put them in order
+				a[j] = a[j-1];		// moving the element up (left)
+				a[j-1] = temp;		// finish swapping
+				j--;				// move to the left...
+				
+				System.out.print(">>> ");	
+				// shows you each swap made
+				printArray(a);		// shows the array as we sort
+				counter++;
+			}
+		}
+		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
 
 	// https://youtu.be/OGzPmgsI-pQ
@@ -139,13 +153,15 @@ public class SortingSkeletonHW
 
 		System.out.println("\nSimple Insertion sort");
 		array = clone(original);
+		printArray(original);
 		simpleInsertion( array );
 		printArray(array);
-/*
+
 		System.out.println("\nAlternative Insertion sort");
 		array = clone(original);
+		printArray(original);
 		insertion( array );
 		printArray(array);
-*/
+
 	}
 }
