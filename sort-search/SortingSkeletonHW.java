@@ -9,6 +9,8 @@
  * 
  * Also check https://visualgo.net/en/sorting 
  */
+import java.util.*;
+
 public class SortingSkeletonHW
 {
 	public static void printArray(int[] array)
@@ -77,19 +79,26 @@ public class SortingSkeletonHW
 		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
 
-	public static void selection2(int[] a)
+	public static void optimisedSelection(int[] a)
 	{	int counter = 0;
 		int small_index;
+		boolean swapped;
 		for(int i = 0; i < a.length; i++)
-		{	small_index = i;
+		{
+			small_index = i;
 			for(int j = i+1; j < a.length; j++) // looks for the smallest unsorted element
 			{	if( a[j] < a[small_index] )		// check for a smaller element and 
 				{	small_index = j;			// change the index of smallest unsorted element
 				}
 			}
-			int temp = a[i];
-			a[i] = a[small_index];
-			a[small_index] = temp;
+			if(small_index != i)
+			{
+				int temp = a[i];
+				a[i] = a[small_index];
+				a[small_index] = temp;
+			} else {
+				break;
+			}
 			
 			System.out.print(">>> "); // shows you each swap made
 			printArray(a); // shows the array as we sort
@@ -121,47 +130,139 @@ public class SortingSkeletonHW
 	// https://youtu.be/OGzPmgsI-pQ
 	public static void insertion(int[] a)
 	{
-		// your code goes here - for the alternative insertion sort
+		int counter = 0;
+		for(int i = 1; i < a.length; i++)
+		{	int temp = a[i];
+			int j = i-1;
+			while(j >= 0 && a[j] > temp)
+			{
+				a[j+1] = a[j];	// make room to insert element in its right place
+				j--;
+				
+				System.out.print(">>> ");	// shows you each swap made
+				printArray(a);		// shows the array as we sort
+				//counter++; 
+			}
+			a[j+1] = temp;	// swap to put temp in the right place
+			counter++;
+		}
+		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
 
 	// No need to modify the main method.
 	public static void main(String[] args)
 	{
-		int[] original = { 7,9,6,8,1,3,5,2,4 };
-		//int[] original = { 9,8,7,6,5,4,3,2,1,0 };
-		//int[] original = { 1,2,3,4,5,6,7,8,9,10 };
-		int[] array = clone(original);
-		System.out.println("Original array");
-		printArray(original);
+		Scanner in = new Scanner(System.in);
+		int[] random = { 7,9,6,8,1,3,5,2,4 };		// array of integers in random order
+		int[] descending = { 9,8,7,6,5,4,3,2,1,0 };	// array of integers descending order
+		int[] ascending = { 1,2,3,4,5,6,7,8,9,10 };	// array of integers in ascending order
+		int[] array = clone(random);
+		System.out.println("random array");
+		printArray(random);
 
-		System.out.println("\nBubble sort");
+		System.out.println("\nBubble sort-Random array");
 		bubble( array );
 		printArray(array);
 		System.out.println();
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nBubble sort-descending array");
+		array = clone(descending);
+		bubble( array );
+		printArray(array);
+		System.out.println();
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nBubble sort-ascending array");
+		array = clone(ascending);
+		bubble( array );
+		printArray(array);
+		System.out.println();
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 
-		System.out.println("\nSelection sort");
-		array = clone(original);
-		printArray(original);
+		System.out.println("\nSelection sort-Random array");
+		array = clone(random);
+		printArray(random);
 		selection( array );
 		printArray(array);
-
-		System.out.println("\nMy Selection sort");
-		array = clone(original);
-		printArray(original);
-		selection2( array );
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nSelection sort-Ascending array");
+		array = clone(ascending);
+		printArray(random);
+		selection( array );
 		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nSelection sort-Descending array");
+		array = clone(descending);
+		printArray(random);
+		selection( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 
-		System.out.println("\nSimple Insertion sort");
-		array = clone(original);
-		printArray(original);
+		System.out.println("\nOptimised Selection sort-Random array");
+		array = clone(random);
+		printArray(array);
+		optimisedSelection( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nOptimised Selection sort-Descending array");
+		array = clone(descending);
+		printArray(array);
+		optimisedSelection( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nOptimised Selection sort-Ascending array");
+		array = clone(ascending);
+		printArray(array);
+		optimisedSelection( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+
+		System.out.println("\nSimple Insertion sort-Random array");
+		array = clone(random);
+		printArray(random);
 		simpleInsertion( array );
 		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nSimple Insertion sort-Descending");
+		array = clone(descending);
+		printArray(array);
+		simpleInsertion( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nSimple Insertion sort-Ascending");
+		array = clone(ascending);
+		printArray(array);
+		simpleInsertion( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 
-		System.out.println("\nAlternative Insertion sort");
-		array = clone(original);
-		printArray(original);
+		System.out.println("\nAlternative Insertion sort-Random array");
+		array = clone(random);
+		printArray(array);
 		insertion( array );
 		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nAlternative Insertion sort-Descending array");
+		array = clone(descending);
+		printArray(array);
+		insertion( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\nAlternative Insertion sort-Ascending array");
+		array = clone(ascending);
+		printArray(array);
+		insertion( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 
 	}
 }
