@@ -21,22 +21,28 @@ public class Queue
 	}
 	
 	public int dequeue()
-	{	if(isEmpty())
+	{	if( isEmpty() )
 		{	System.out.println( "Queue empty" );
 			return 0; // rogue value
 		}
 		int save = head.data;
 		head = head.next;
-		//if(head==null) tail=null; // for thorough cleanup, optional
+		if( head==null )
+		{	tail=null; // for thorough cleanup, optional
+		}
 		return save;
 	}
 	
 	public void print()
-	{	Node temp = head; // we use a temp node to avoid popping
+	{	if( isEmpty() )
+		{	System.out.println( "Queue empty" );
+			return;
+		}
+		Node temp = head; // we use a temp node to avoid popping
 		System.out.print( "Head -> " );
 		while( temp != null)
 		{	System.out.print( temp.data + " <- " );
-			temp = temp.next;
+			temp = temp.next; // moves the temp pointer (node) to the next element in the Q
 		}
 		System.out.println( " Tail" );
 	}

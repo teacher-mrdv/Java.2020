@@ -1,8 +1,8 @@
-/* Sorting algorithms formative assessment
+/* Sorting algorithms
  * 
- * Student Name: 
+ * Final version 
  * 
- * 23/March/2020
+ * 20/April/2020
  * 
  * Please read sorting_algos_SL.pdf and convert the pseudocode algorithms
  * into Java methods
@@ -132,19 +132,22 @@ public class SortingSkeletonHW
 	{
 		int counter = 0;
 		for(int i = 1; i < a.length; i++)
-		{	int temp = a[i];
+		{	boolean change = false;
+			int temp = a[i];
 			int j = i-1;
 			while(j >= 0 && a[j] > temp)
 			{
 				a[j+1] = a[j];	// make room to insert element in its right place
 				j--;
-				
-				System.out.print(">>> ");	// shows you each swap made
-				printArray(a);		// shows the array as we sort
+				change = true;	// flag to show change in the array (because a[j] > temp)
+				System.out.print(">>> ");	// shows you each change to the array made
+				printArray(a);	// shows the array as we sort
 				//counter++; 
 			}
-			a[j+1] = temp;	// swap to put temp in the right place
-			counter++;
+			if(change)
+			{	a[j+1] = temp;	// insert/put temp in the right place
+				counter++;
+			}
 		}
 		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
@@ -153,7 +156,7 @@ public class SortingSkeletonHW
 	public static void main(String[] args)
 	{
 		Scanner in = new Scanner(System.in);
-		int[] random = { 7,9,6,8,1,3,5,2,4 };		// array of integers in random order
+		int[] random = { 7,9,6,8,1,3,5,0,2,4 };		// array of integers in random order
 		int[] descending = { 9,8,7,6,5,4,3,2,1,0 };	// array of integers descending order
 		int[] ascending = { 1,2,3,4,5,6,7,8,9,10 };	// array of integers in ascending order
 		int[] array = clone(random);
@@ -187,13 +190,6 @@ public class SortingSkeletonHW
 		printArray(array);
 		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 		
-		System.out.println("\nSelection sort-Ascending array");
-		array = clone(ascending);
-		printArray(random);
-		selection( array );
-		printArray(array);
-		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
-		
 		System.out.println("\nSelection sort-Descending array");
 		array = clone(descending);
 		printArray(random);
@@ -201,6 +197,13 @@ public class SortingSkeletonHW
 		printArray(array);
 		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 
+		System.out.println("\nSelection sort-Ascending array");
+		array = clone(ascending);
+		printArray(random);
+		selection( array );
+		printArray(array);
+		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
 		System.out.println("\nOptimised Selection sort-Random array");
 		array = clone(random);
 		printArray(array);
