@@ -131,7 +131,7 @@ public class SortingSearching
 	
 	// worst case scenario is N (array length) steps to find the key (or to realise that it's not there)
 	public static int search(int[] a, int key)
-	{	//int counter = 0;
+	{	int counter = 0;
 		boolean found = false;
 		int index = 0;
 		int location = -1; // -1 if not found
@@ -141,14 +141,14 @@ public class SortingSearching
 				location = index;
 			}
 			index++;
-			//counter++;
+			counter++;
 		}
-		//System.out.println("Steps: " + counter);
+		System.out.println("Steps: " + counter);
 		return location;
 	}
 	
 	// Binary search video: https://youtu.be/o2LqhHoAXxI
-	public static int search(int[] a, int key)
+	public static int binarySearch(int[] a, int key)
 	{	//int counter = 0;
 		int index = -1;
 		// code...
@@ -203,7 +203,7 @@ public class SortingSearching
 
 		System.out.println("\nSelection sort-Ascending array");
 		array = clone(ascending);
-		printArray(random);
+		printArray(ascending);
 		selection( array );
 		printArray(array);
 		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
@@ -276,12 +276,12 @@ public class SortingSearching
 		printArray(random);
 		System.out.print("Input a number to search: ");
 		int n = in.nextInt();
-		System.out.print( n );
+		//System.out.print( n );
 		int location = search(random, n);
 		if(location == -1)
-		{	System.out.println( " not found." );
+		{	System.out.println( n+" not found." );
 		} else {
-			System.out.println( " found at index " + location );
+			System.out.println( n+" found at index " + location );
 		}
 	}
 }

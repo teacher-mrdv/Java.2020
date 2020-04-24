@@ -62,16 +62,52 @@ public class LinkedList
 		Node temp = first; // we use a temp node to avoid popping
 		System.out.print( "first -> " );
 		while( temp != null)
-		{	System.out.print( temp.data + " <- " );
+		{	System.out.print( temp.data + " -> " );
 			temp = temp.next; // moves the temp pointer (node) to the next element in the Q
 		}
-		System.out.println();
+		System.out.println("null");
 	}
 	
 	// next lesson: insert (after a specific node/element)
+	public void insertAfter(int n, int after)
+	{
+		Node newNode = new Node();
+		newNode.data = n;
+		Node current = first;
+		while( current.next != null )
+		{	if( current.data == after )
+			{	break;
+			}
+			current = current.next;
+		}
+		newNode.next = current.next;
+		current.next = newNode;
+	}
 	
-	// HW: create a LinkedListTest class to test
-	// create a linked list, append and remove items. Look at the QueueTest class for examples. 
-
+	/* Homework:
+	 * create a linked list test class (i.e. LinkedListTest.java)
+	 * append, remove and insert items (and print the linked list to see the changes).
+	 * Look at the QueueTest class for examples.
+	 * 
+	 * extra challenge: code an test insertBefore method ;)
+	 */
+	
+	public static void main(String[] args)
+	{
+		LinkedList l = new LinkedList();
+		int[] a = { 0, 5, 7, 3, 1, 8, 2 };
+		for( int n : a )
+		{	l.append(n);
+			l.print();
+		}
+		l.insertAfter(15, 5); l.print();
+		l.insertAfter(12, 2); l.print();
+		l.insertAfter(13, 3); l.print();
+		l.remove(0) ; l.print();
+		l.remove(15); l.print();
+		l.remove(13); l.print();
+		l.remove(12); l.print();
+		
+	}
 }
 
