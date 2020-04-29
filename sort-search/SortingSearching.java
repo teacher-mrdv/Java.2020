@@ -37,7 +37,7 @@ public class SortingSearching
 		int counter = 0;		// count the number of swaps made
 		boolean swapped = true; // this is called a FLAG
 		int lastElement = a.length;
-		while(swapped)
+		while(swapped)			// stops trying to sort if no swaps made in one pass
 		{
 			swapped = false;	// assumes no swaps made
 			for(int i = 0; i < lastElement-1; i++) // inner loop
@@ -45,14 +45,14 @@ public class SortingSearching
 				{	int temp = a[i];	// swap elements out of order
 					a[i] = a[i+1];
 					a[i+1] = temp;
-					swapped = true;
+					swapped = true;		// we made a swap, flag it
 					
 					counter++;					// counts the number of swaps made
 					System.out.print(">>> ");	// shows you each swap made
 					printArray(a);				// shows the array as we sort
 				}
 			}
-			lastElement--; // avoid comparing already sorted (bubbled-up elements)
+			lastElement--; // avoid comparing already sorted (bubbled-up) elements
 		}
 		
 		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
@@ -220,6 +220,7 @@ public class SortingSearching
 		int[] random = { 7,9,6,8,1,3,5,0,2,4 };		// array of integers in random order
 		int[] descending = { 9,8,7,6,5,4,3,2,1,0 };	// array of integers descending order
 		int[] ascending = { 0,1,2,3,4,5,6,7,8,9 };	// array of integers in ascending order
+		int[] almostSorted = { 0,1,2,3,4,5,6,7,9,8 };// array of integers ALMOST sorted (ascending) -- you may want to use this for further testing your algorithms ---
 		int[] array = clone(random);
 		System.out.println("random array");
 		printArray(random);
@@ -330,12 +331,13 @@ public class SortingSearching
 		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 		
 		int n , location;
+		Scanner inputInt = new Scanner(System.in);
 		for(int i = 0; i < 5; i++) // to test a few cases...
 		{
 			System.out.println("\nSequential search: ");
 			printArray(random);
 			System.out.print("Input a number to search: ");
-			n = in.nextInt(); // input a number
+			n = inputInt.nextInt(); // input a number
 			location = search(random, n);
 			if(location == -1)
 			{	System.out.println( n+" not found." );
