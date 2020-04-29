@@ -41,8 +41,8 @@ public class SortingSearching
 		{
 			swapped = false; // assumes no swaps made
 			for(int i = 0; i < lastElement-1; i++) // inner loop
-			{	if(a[i] > a[i+1])
-				{	int temp = a[i]; // swap elements out of order
+			{	if(a[i] > a[i+1])		// a[i].compareTo(a[i+2]) > 0 :for Strings
+				{	int temp = a[i];	// swap elements out of order
 					a[i] = a[i+1];
 					a[i+1] = temp;
 					swapped = true;
@@ -130,9 +130,9 @@ public class SortingSearching
 	}
 	
 	// worst case scenario is N (array length) steps to find the key (or to realise that it's not there)
-	public static int search(int[] a, int key)
-	{	int counter = 0;
-		boolean found = false;
+	public static int search(int[] a, int key) // key = element that we are looking for
+	{	int counter = 0; // optional
+		boolean found = false; // flag
 		int index = 0;
 		int location = -1; // -1 if not found
 		while( !found && index < a.length)
@@ -141,19 +141,51 @@ public class SortingSearching
 				location = index;
 			}
 			index++;
-			counter++;
+			counter++; // optional
 		}
-		System.out.println("Steps: " + counter);
+		System.out.println("Steps: " + counter); // optional
 		return location;
 	}
 	
-	// Binary search video: https://youtu.be/o2LqhHoAXxI
+	/* Binary search resources:
+	 * https://youtu.be/o2LqhHoAXxI
+	 * https://www.geeksforgeeks.org/binary-search/
+	 * https://www.youtube.com/watch?v=wNVCJj642n4
+	 * https://www.youtube.com/watch?v=X3xRQ-j_sOI
+	 * 
+	 * NOTE: Since binary search requires array to be sorted,
+	 * the TOTAL Big O of binary search would be Big O of the sorting algorithm
+	 * plus the Big O of the binary search, for example: O(n^2) + log2(n)
+	 */
 	public static int binarySearch(int[] a, int key)
-	{	//int counter = 0;
-		int index = -1;
-		// code...
-		//System.out.println("Steps: " + counter);
-		return index;
+	{	int counter = 0;
+		int location = -1;
+		int middle = 0;
+		int first = 0;
+		int last = a.length - 1;
+		
+		boolean found = false;
+		
+		while(!found && first <= last)
+		{
+			middle = (first + last) / 2;
+			System.out.printf("\t\tfirst %d last %d middle %d \n", first, last, middle); // optional
+			if(key == a[middle])
+			{	found = true;
+				location = middle;
+			}
+			else if( key < a[middle] )
+			{	last = middle - 1;
+			}
+			else
+			{	first = middle + 1;
+			}
+		
+			counter++;
+		}
+		
+		System.out.println("Steps: " + counter);
+		return location;
 	}
 	
 	// No need to modify the main method.
@@ -271,17 +303,31 @@ public class SortingSearching
 		insertion( array );
 		printArray(array);
 		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
-
-		System.out.println("\n\nSequential search: ");
-		printArray(random);
-		System.out.print("Input a number to search: ");
-		int n = in.nextInt();
-		//System.out.print( n );
-		int location = search(random, n);
-		if(location == -1)
-		{	System.out.println( n+" not found." );
-		} else {
-			System.out.println( n+" found at index " + location );
+		int n , location;
+		for(int i = 0; i < 5; i++) // to test a few cases...
+		{
+			System.out.println("\nSequential search: ");
+			printArray(random);
+			System.out.print("Input a number to search: ");
+			n = in.nextInt();
+			location = search(random, n);
+			if(location == -1)
+			{	System.out.println( n+" not found." );
+			} else {
+				System.out.println( n+" found at index " + location );
+			}
+			
+			System.out.println("\nBinary search: ");
+			printArray(array);
+			System.out.print("Input a number to search: ");
+			n = in.nextInt();
+			location = binarySearch(array, n);
+			if(location == -1)
+			{	System.out.println( n+" not found." );
+			} else {
+				System.out.println( n+" found at index " + location );
+			}
 		}
+	
 	}
 }
