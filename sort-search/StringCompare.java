@@ -14,6 +14,8 @@
  * https://www.geeksforgeeks.org/compare-two-strings-in-java/
  * https://www.w3schools.com/java/java_ref_string.asp
  * 
+ * https://www.ascii-code.com/ <-- for reference
+ * 
  */
 import java.util.Scanner;
 
@@ -34,6 +36,7 @@ public class StringCompare
 			System.out.println("s1.equals(s2) = " + s1.equals(s2));
 			System.out.println("s1.compareTo(s2) = " + s1.compareTo(s2));
 			System.out.println("s2.compareTo(s1) = " + s2.compareTo(s1));
+			System.out.println("s1.compareTo(s1) = " + s1.compareTo(s1));
 			System.out.println("s2.compareTo(s2) = " + s2.compareTo(s2));
 			
 			if(s1.compareTo(s2) > 0)

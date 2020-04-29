@@ -32,14 +32,14 @@ public class SortingSearching
 		return copy;
 	}
 
-	static void bubble(int[] a) // optimised bubble sort (there are other 2 less optimised versions)
+	public static void bubble(int[] a) // optimised bubble sort (there are other 2 less optimised versions)
 	{
-		int counter = 0; // count the number of swaps made
+		int counter = 0;		// count the number of swaps made
 		boolean swapped = true; // this is called a FLAG
 		int lastElement = a.length;
-		for(int c = 0; c < a.length; c++)
+		while(swapped)
 		{
-			swapped = false; // assumes no swaps made
+			swapped = false;	// assumes no swaps made
 			for(int i = 0; i < lastElement-1; i++) // inner loop
 			{	if(a[i] > a[i+1])		// a[i].compareTo(a[i+2]) > 0 :for Strings
 				{	int temp = a[i];	// swap elements out of order
@@ -47,9 +47,9 @@ public class SortingSearching
 					a[i+1] = temp;
 					swapped = true;
 					
-					counter++;
-					System.out.print(">>> "); // shows you each swap made
-					printArray(a); // shows the array as we sort
+					counter++;					// counts the number of swaps made
+					System.out.print(">>> ");	// shows you each swap made
+					printArray(a);				// shows the array as we sort
 				}
 			}
 			lastElement--; // avoid comparing already sorted (bubbled-up elements)
@@ -79,10 +79,35 @@ public class SortingSearching
 		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
 
-/*	public static void optimisedSelection(int[] a) // challenge for you!
-	{	
+	public static void optimisedSelection(int[] a) // challenge for you!
+	{	boolean change ;
+		int counter = 0;
+		int small_index;
+		for(int i = 0; i < a.length; i++)
+		{	small_index = i;
+			change = false;
+			for(int j = i+1; j < a.length; j++) // looks for the smallest unsorted element
+			{	if( a[j] < a[small_index] )		// check for a smaller element and 
+				{	small_index = j;			// change the index of smallest unsorted element
+					change = true;
+				}
+			}
+			if(change)
+			{
+				int temp = a[i];		// swap element (put smaller at the
+				a[i] = a[small_index];	// beginning of the unsorted array
+				a[small_index] = temp;
+				counter++;
+			} else {
+				break;					// if no changes had to be made in the array, exit
+			}
+			System.out.print(">>> "); // shows you each swap made
+			printArray(a); // shows the array as we sort
+			
+		}
+		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
 	}
-*/
+
 
 	// https://youtu.be/JU767SDMDvA
 	public static void simpleInsertion(int[] a)
@@ -101,7 +126,7 @@ public class SortingSearching
 				counter++;
 			}
 		}
-		System.out.println("DONE! " + counter +" swaps to sort " + a.length + " elements.");
+		System.out.println("DONE! " + counter +" insertions to sort " + a.length + " elements.");
 	}
 
 	// https://youtu.be/OGzPmgsI-pQ
@@ -122,11 +147,11 @@ public class SortingSearching
 				//counter++; 
 			}
 			if(change)
-			{	a[j+1] = temp;	// swap/insert/put temp in the right place
+			{	a[j+1] = temp;	// swap/insert/put temp in the right place only if necessary
 				counter++;
 			}
 		}
-		System.out.println("DONE! " + counter +" swaps/insertions to sort " + a.length + " elements.");
+		System.out.println("DONE! " + counter +" insertions to sort " + a.length + " elements.");
 	}
 	
 	// worst case scenario is N (array length) steps to find the key (or to realise that it's not there)
@@ -169,7 +194,7 @@ public class SortingSearching
 		while(!found && first <= last)
 		{
 			middle = (first + last) / 2;
-			System.out.printf("\t\tfirst %d last %d middle %d \n", first, last, middle); // optional
+			System.out.printf("\tIndices: first = %d | last = %d | middle = %d \n", first, last, middle); // optional
 			if(key == a[middle])
 			{	found = true;
 				location = middle;
@@ -241,27 +266,27 @@ public class SortingSearching
 		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 		
 		// un-comment this once you've coded the optimised selection sort
-/*		System.out.println("\nOptimised Selection sort-Random array");
+		System.out.println("\nOptimised Selection sort-Random array");
 		array = clone(random);
 		printArray(array);
 		optimisedSelection( array );
 		printArray(array);
-		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 		
 		System.out.println("\nOptimised Selection sort-Descending array");
 		array = clone(descending);
 		printArray(array);
 		optimisedSelection( array );
 		printArray(array);
-		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 		
 		System.out.println("\nOptimised Selection sort-Ascending array");
 		array = clone(ascending);
 		printArray(array);
 		optimisedSelection( array );
 		printArray(array);
-		System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
-*/
+		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+
 		System.out.println("\nSimple Insertion sort-Random array");
 		array = clone(random);
 		printArray(random);
@@ -303,13 +328,14 @@ public class SortingSearching
 		insertion( array );
 		printArray(array);
 		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
 		int n , location;
 		for(int i = 0; i < 5; i++) // to test a few cases...
 		{
 			System.out.println("\nSequential search: ");
 			printArray(random);
 			System.out.print("Input a number to search: ");
-			n = in.nextInt();
+			n = in.nextInt(); // input a number
 			location = search(random, n);
 			if(location == -1)
 			{	System.out.println( n+" not found." );
@@ -317,7 +343,7 @@ public class SortingSearching
 				System.out.println( n+" found at index " + location );
 			}
 			
-			System.out.println("\nBinary search: ");
+			System.out.println("\nBinary search: "); // array must be sorted
 			printArray(array);
 			System.out.print("Input a number to search: ");
 			n = in.nextInt();
