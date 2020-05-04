@@ -20,6 +20,19 @@ public class LinkedList
 		}
 	}
 	
+	public void insert(int n) // insert in order; insert but keeping the linked list sorted in ascending order
+	{
+		// your code goes here
+		Node newNode = new Node();
+		newNode.data = n;
+		if( isEmpty() )
+		{	first = newNode;
+			return;
+		}
+
+		
+	}
+	
 	public boolean remove1(int delete)
 	{	if( isEmpty() )
 		{	return false;
@@ -59,11 +72,11 @@ public class LinkedList
 		{	System.out.println( "List empty" );
 			return;
 		}
-		Node temp = first; // we use a temp node to avoid popping
+		Node current = first; // we use a temp node to avoid popping
 		System.out.print( "first -> " );
-		while( temp != null)
-		{	System.out.print( temp.data + " -> " );
-			temp = temp.next; // moves the temp pointer (node) to the next element in the Q
+		while( current != null)
+		{	System.out.print( current.data + " -> " );
+			current = current.next; // moves the temp pointer (node) to the next element in the Q
 		}
 		System.out.println("null");
 	}
@@ -71,6 +84,10 @@ public class LinkedList
 	// next lesson: insert (after a specific node/element)
 	public void insertAfter(int n, int after)
 	{
+		if( isEmpty() )
+		{	append(n); //System.out.println( "List empty" );
+			return;
+		}
 		Node newNode = new Node();
 		newNode.data = n;
 		Node current = first;
@@ -84,30 +101,32 @@ public class LinkedList
 		current.next = newNode;
 	}
 	
-	/* Homework:
-	 * create a linked list test class (i.e. LinkedListTest.java)
-	 * append, remove and insert items (and print the linked list to see the changes).
-	 * Look at the QueueTest class for examples.
-	 * 
-	 * extra challenge: code an test insertBefore method ;)
-	 */
-	
-	public static void main(String[] args)
+	public void insertBefore(int n, int before)
 	{
-		LinkedList l = new LinkedList();
-		int[] a = { 0, 5, 7, 3, 1, 8, 2 };
-		for( int n : a )
-		{	l.append(n);
-			l.print();
+		if( isEmpty() )
+		{	append(n); //System.out.println( "List empty" );
+			return;
 		}
-		l.insertAfter(15, 5); l.print();
-		l.insertAfter(12, 2); l.print();
-		l.insertAfter(13, 3); l.print();
-		l.remove(0) ; l.print();
-		l.remove(15); l.print();
-		l.remove(13); l.print();
-		l.remove(12); l.print();
-		
+		Node newNode = new Node();
+		newNode.data = n;
+		if( first.data == before )
+		{	newNode.next = first;
+			first = newNode;
+		} else {
+			Node previous = first;
+			Node current  = first.next;
+			
+			while( current.next != null )
+			{	if( current.data == before )
+				{	break;
+				}
+				previous = previous.next;
+				current = current.next;
+			}
+			newNode.next  = current;
+			previous.next = newNode;
+		}
 	}
+	
 }
 
