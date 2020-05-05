@@ -98,8 +98,6 @@ public class SortingSearching
 				a[i] = a[small_index];	// beginning of the unsorted array
 				a[small_index] = temp;
 				counter++;
-			} else {
-				break;					// if no changes had to be made in the array, exit
 			}
 			System.out.print(">>> "); // shows you each swap made
 			printArray(a); // shows the array as we sort
@@ -283,6 +281,13 @@ public class SortingSearching
 		
 		System.out.println("\nOptimised Selection sort-Ascending array");
 		array = clone(ascending);
+		printArray(array);
+		optimisedSelection( array );
+		printArray(array);
+		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
+		
+		System.out.println("\n***Optimised Selection sort-almost sorted array");
+		array = clone(almostSorted);
 		printArray(array);
 		optimisedSelection( array );
 		printArray(array);
