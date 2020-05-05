@@ -99,6 +99,10 @@ public class SortingSearching
 				a[small_index] = temp;
 				counter++;
 			}
+			// this no good... check the almost sorted case with and w/o this else
+			/* else {
+				break;
+			} */
 			System.out.print(">>> "); // shows you each swap made
 			printArray(a); // shows the array as we sort
 			
