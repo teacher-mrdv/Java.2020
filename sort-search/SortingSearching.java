@@ -290,7 +290,7 @@ public class SortingSearching
 		printArray(array);
 		//System.out.print("Press [Enter] or [Return] to continue."); in.nextLine();
 		
-		System.out.println("\n***Optimised Selection sort-almost sorted array");
+		System.out.println("\n******Optimised Selection sort-almost sorted array******");
 		array = clone(almostSorted);
 		printArray(array);
 		optimisedSelection( array );
