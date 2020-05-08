@@ -19,6 +19,39 @@ public class LinkedList
 			temp.next = newNode;
 		}
 	}
+/*	
+	// insert in order; insert a node, but keeping the linked list sorted in ascending order
+	public void insert(int n)
+	{
+		Node newNode = new Node();
+		newNode.data = n;
+		if( isEmpty() )		// empty list case
+		{
+			first = newNode;
+			return;
+		}
+		if( n <= first.data )// new element is smaller than (or equal to) the first element
+		{
+			newNode.next = first;
+			first = newNode;
+		} else {			// insert after first element
+			Node previous = first;
+			Node current = first.next;
+			while(current.next != null)
+			{
+				if(previous.data < n && current.data >= n)
+				{
+					newNode.next  = current;
+					previous.next = newNode;
+					break;	// or return
+				} else {
+					previous = previous.next;
+					current = current.next;
+				}
+			}
+		}
+	}
+*/
 
 	public void insert(int n)
 	{
@@ -53,10 +86,10 @@ public class LinkedList
 			return true;
 		}
 		Node current = first;
-		while(current.next != null && current.next.data != delete) // look for node to delete until we get to the last element of the linked list
+		while(current.next != null && current.next.data != delete)
 		{	current = current.next;
 		}
-		if(current.next == null) // check if we are at the end of the list (delete not found)
+		if(current.next == null)
 		{	return false;
 		} else {
 			current.next = current.next.next;
