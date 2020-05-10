@@ -1,4 +1,4 @@
-public class LinkedList
+public class LinkedList0
 {
 	Node first = null; // single pointer ("head") --> saves memory
 	
@@ -19,7 +19,7 @@ public class LinkedList
 			temp.next = newNode;
 		}
 	}
-/*	
+
 	// insert in order; insert a node, but keeping the linked list sorted in ascending order
 	public void insert(int n)
 	{
@@ -37,23 +37,23 @@ public class LinkedList
 		} else {			// insert after first element
 			Node previous = first;
 			Node current = first.next;
-			while(current.next != null)
+			while(current != null)
 			{
 				if(previous.data < n && current.data >= n)
 				{
-					newNode.next  = current;
-					previous.next = newNode;
-					break;	// or return
+					break;
 				} else {
 					previous = previous.next;
 					current = current.next;
 				}
 			}
+			newNode.next  = current;
+			previous.next = newNode;
 		}
 	}
-*/
 
-	public void insert(int n)
+
+	public void insert2(int n)
 	{
 		Node newNode = new Node();
 		newNode.data = n;
@@ -186,6 +186,18 @@ public class LinkedList
 			}
 			newNode.next  = current;
 			previous.next = newNode;
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("\nInserting sorted");
+		LinkedList0 sorted = new LinkedList0();
+		int[] a = { 5,7,3,1,9,2 };
+		for(int n : a)
+		{	//System.out.println(current);
+			sorted.insert(n);
+			sorted.print();
 		}
 	}
 	

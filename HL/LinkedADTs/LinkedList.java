@@ -20,6 +20,38 @@ public class LinkedList
 		}
 	}
 
+	public void myInsert(int n)
+	{
+		Node newNode = new Node();
+		newNode.data = n;
+		if( isEmpty() )		// empty list case
+		{
+			first = newNode;
+			return;
+		}
+		if( n <= first.data )// new element is smaller than (or equal to) the first element
+		{
+			newNode.next = first;
+			first = newNode;
+		} else {			// insert after first element
+			Node previous = first;
+			Node current = first.next;
+			while(current != null)
+			{
+				if(previous.data < n && current.data >= n)
+				{
+					break;
+				} else {
+					previous = previous.next;
+					current = current.next;
+				}
+			}
+			newNode.next  = current;
+			previous.next = newNode;
+		}
+	}
+
+
 	public void insert(int n)
 	{
 		Node newNode = new Node();
