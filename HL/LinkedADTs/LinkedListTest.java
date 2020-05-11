@@ -48,6 +48,7 @@ public class LinkedListTest
 		System.out.println("\nInserting sorted");
 		LinkedList sorted = new LinkedList();
 		Node current = l.first;
+		l.print();
 		while( current != null )
 		{	//System.out.println(current);
 			sorted.insert(current.data);
@@ -56,10 +57,6 @@ public class LinkedListTest
 		}
 		System.out.println("bye bye");
 	}
-		// create another linked list like before, but this time use insert
-		// insert should add elements to a linked list, but sort them at the same time
-		// you may use the insertion sort as an inspiration, you may also use
-		// insertBefore and insertAfter.
 
 }
 

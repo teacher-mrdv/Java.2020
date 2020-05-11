@@ -90,7 +90,7 @@ public class LinkedList
 		}
 		if(current.next == null) // check if we are at the end of the list (delete not found)
 		{	return false;
-		} else {
+		} else {				// if we are not at the last element of the linked list
 			current.next = current.next.next;
 			return true;
 		}
