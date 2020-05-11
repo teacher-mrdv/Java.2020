@@ -68,7 +68,6 @@ public class Array2DHW1
 							{ '6', '7', '8', '9', 'A' },
 							{ 'B', 'C', 'D', 'E', 'F' },
 							{ 'G', 'H', 'I', 'J', 'K' },
-							{ 'L', 'M', 'N', 'O', 'P' }
 						};
 		
 		printDetail(board2);
