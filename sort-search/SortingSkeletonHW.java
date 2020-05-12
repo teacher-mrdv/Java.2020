@@ -37,19 +37,20 @@ public class SortingSkeletonHW
 		int counter = 0; // count the number of swaps made
 		boolean swapped = true; // this is called a FLAG
 		int lastElement = a.length;
-		for(int c = 0; c < a.length; c++)
+		while(swapped) // n
 		{
 			swapped = false; // assumes no swaps made
-			for(int i = 0; i < lastElement-1; i++) // inner loop
-			{	if(a[i] > a[i+1])
+			for(int i = 0; i < lastElement-1; i++) // inner loop n
+			{	counter++;
+				if(a[i] > a[i+1])
 				{	int temp = a[i]; // swap elements out of order
 					a[i] = a[i+1];
 					a[i+1] = temp;
 					swapped = true;
 					
 					counter++;
-					System.out.print(">>> "); // shows you each swap made
-					printArray(a); // shows the array as we sort
+					//System.out.print(">>> "); // shows you each swap made
+					//printArray(a); // shows the array as we sort
 				}
 			}
 			lastElement--; // avoid comparing already sorted (bubbled-up elements)
@@ -64,7 +65,8 @@ public class SortingSkeletonHW
 		for(int i = 0; i < a.length; i++)
 		{	small_index = i;
 			for(int j = i+1; j < a.length; j++) // looks for the smallest unsorted element
-			{	if( a[j] < a[small_index] )		// check for a smaller element and 
+			{	counter++;
+				if( a[j] < a[small_index] )		// check for a smaller element and 
 				{	small_index = j;			// change the index of smallest unsorted element
 				}
 			}
