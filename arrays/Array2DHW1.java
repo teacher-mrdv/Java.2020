@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Array2DHW1
 {
 	public static void printDetail(char[][] a)
@@ -27,7 +29,7 @@ public class Array2DHW1
 		---------
 		numbers are for reference only
 	*/
-	public static void print(char[][] a) // n*(n+n) = n^2
+	public static void print(char[][] a) // n*(n+n) = O(n^2)
 	{
 		int rowLength = a.length;	// number of rows
 		for(int row = 0; row < rowLength; row++)
@@ -48,6 +50,32 @@ public class Array2DHW1
 			}
 			System.out.println();
         }
+	}
+	
+	public static boolean printRow(char[][] a, int row)
+	{
+		if( row >= 0 && row < a.length)
+		{
+			int columnLength = a[row].length;	// number of columns in a row
+			for(int col = 0; col < columnLength; col++)
+			{
+				System.out.print( a[row][col] + " ");
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static void printColumn(char[][] a, int col)
+	{
+		col = abs(col);				// make sure it's positive
+		col = col % a.length;		// 
+		int rowLength = a.length;	// number of columns in a row
+		for(int row = 0; row < rowLength; row++)
+		{
+			System.out.println( a[row][col] );
+		}
 	}
 	
 	public static void main(String[] args)
@@ -76,6 +104,14 @@ public class Array2DHW1
 		
 		char[][] b2 = { {'a', 'b'}, {'c', 'd'} };
 		print(b2);
+		
+		System.out.println("\n");
+		printRow(board2, 4);
+		printRow(board2, 9);
+		
+		System.out.println("\n");
+		printColumn(board2, 5);
+
 	}
 }
 

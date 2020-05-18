@@ -21,6 +21,8 @@ import java.util.*;
 
 public class SortingSearching
 {
+	static int recursiveCalls;
+	
 	public static void printArray(int[] array)	// O(n) n=array length
 	{
 		for( int e: array )						// for each element in the array
@@ -40,7 +42,7 @@ public class SortingSearching
 		return copy;
 	}
 
-	public static void bubble(int[] a)  // O(n^2)
+	public static void bubble(int[] a)  		// O(n^2)
 	{
 		int counter = 0;
         int lastElement = a.length;
@@ -218,7 +220,7 @@ public class SortingSearching
 	 * the TOTAL Big O of binary search would be Big O of the sorting algorithm
 	 * plus the Big O of the binary search, for example: O(n^2) + log2(n)
 	 */
-	public static int binarySearch(int[] a, int key) // O(log2 n)
+	public static int binarySearch(int[] a, int key) // O(log2 n) -- iterative (loop) version
 	{	int counter = 0;
 		int location = -1;
 		int middle = 0;
@@ -247,6 +249,25 @@ public class SortingSearching
 		
 		System.out.println("Steps: " + counter);
 		return location;
+	}
+	
+	public static int binarySearchRecursive(int[] a, int key, int first, int last ) // recursive version
+	{
+		recursiveCalls++;
+		int middle = (first + last) / 2 ;
+		//System.out.printf("First %d\tMiddle %d\tLast %d\n", first, middle, last);
+		if( a[ middle ] == key )		// find the key
+		{
+			return middle;
+		} else if( a[middle] > key )
+		{
+			return binarySearchRecursive(a, key, first, middle);
+		} else if( a[middle] < key )
+		{
+			return binarySearchRecursive(a, key, middle, last);
+		} else {
+			return -1;
+		}
 	}
 	
 	// No need to modify the main method.
@@ -393,7 +414,7 @@ public class SortingSearching
 		Scanner inputInt = new Scanner(System.in);
 		for(int i = 0; i < 3; i++) // to test a few cases...
 		{
-			System.out.println("\nSequential search: ");
+/*			System.out.println("\nSequential search: ");
 			printArray(random);
 			System.out.print("Input a number to search: ");
 			n = inputInt.nextInt(); // input a number
@@ -403,7 +424,7 @@ public class SortingSearching
 			} else {
 				System.out.println( n+" found at index " + location );
 			}
-			
+*/			
 			System.out.println("\nBinary search: "); // array must be sorted
 			printArray(array);
 			System.out.print("Input a number to search: ");
@@ -414,6 +435,16 @@ public class SortingSearching
 			} else {
 				System.out.println( n+" found at index " + location );
 			}
+			System.out.println( "\nRecursive Binary search:" );
+			recursiveCalls = 0;
+			location = binarySearchRecursive(array, n, 0, array.length);
+			System.out.println("\tCalls = " + recursiveCalls);
+			if(location == -1)
+			{	System.out.println( n+" not found." );
+			} else {
+				System.out.println( n+" found at index " + location );
+			}
+			
 		}
 	
 	}

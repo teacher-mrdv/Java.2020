@@ -54,8 +54,8 @@ public class LinkedList
 
 	public void insert(int n)
 	{
-		Node newNode = new Node();
-		newNode.data = n;
+		Node newNode = new Node(n);
+		//newNode.data = n;
 		if( isEmpty() )		// empty list case
 		{
 			first = newNode;
