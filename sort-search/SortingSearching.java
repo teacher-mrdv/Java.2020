@@ -251,6 +251,7 @@ public class SortingSearching
 		return location;
 	}
 	
+	// The recursive binary search is for HL ONLY --------
 	public static int binarySearchRecursive(int[] a, int key, int first, int last ) // recursive version
 	{
 		recursiveCalls++;
