@@ -24,7 +24,31 @@ public class TicTacToe
         }
 	}
 
-
+	public static boolean printRow(char[][] board, int row)
+	{
+		if( board == null || row < 0 || row >= board.length )
+		{
+			return false;
+		}
+		
+		for(int col = 0; col < board[row].length; col++) // iterates over each column
+		{
+			System.out.print(board[row][col] + " ");
+		}
+		System.out.println();
+		return true;
+	}
+	
+	public static void printColumn(char[][] board, int col)
+	{
+		if( col < 0 )
+		{	col = col * -1;		// col = Math.abs(col);
+		}
+		if( col > board.length )
+		{	col = col % board[0].length;
+		}
+			
+	}
 
 	public static void main(String[] args)
 	{	/* declare and instantiate an array:
@@ -36,9 +60,8 @@ public class TicTacToe
 							{ '7', '8', '9' }
 						};
 		
-		printDetail(board);
+		printBoard(board);
 		System.out.println();
-		print(board);
 		
 		char[][] board2= {	{ '1', '2', '3', '4', '5' },
 							{ '6', '7', '8', '9', 'A' },
@@ -46,14 +69,13 @@ public class TicTacToe
 							{ 'G', 'H', 'I', 'J', 'K' },
 						};
 		
-		printDetail(board2);
+		printBoard(board2);
 		System.out.println();
-		print(board2);
-/*		
-		System.out.println("\nPrinting rows 4 & 9");
-		printRow(board2, 4);
-		printRow(board2, 9);
 		
+		System.out.println("\nPrinting rows 3 & 9");
+		System.out.println( printRow(board2, 3) );
+		System.out.println( printRow(board2, 9) );
+/*		
 		System.out.println("\nPrinting columns 5 & 9");
 		printColumn(board2, 5);
 		printColumn(board2, 9);
