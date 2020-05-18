@@ -61,6 +61,7 @@ public class Array2DHW1
 			{
 				System.out.print( a[row][col] + " ");
 			}
+			System.out.println();
 			return true;
 		} else {
 			return false;
@@ -69,9 +70,14 @@ public class Array2DHW1
 	
 	public static void printColumn(char[][] a, int col)
 	{
-		col = abs(col);				// make sure it's positive
-		col = col % a.length;		// 
 		int rowLength = a.length;	// number of columns in a row
+		if( col < 0 )				// make sure it's positive
+		{	col = (int)Math.abs(col);
+		}
+		if( col >= rowLength )		// roll over if it's too large, assuming all rows have same number of columns
+		{	col = (col % a[0].length);
+			System.out.println("\t"+col);
+		}
 		for(int row = 0; row < rowLength; row++)
 		{
 			System.out.println( a[row][col] );
@@ -102,15 +108,13 @@ public class Array2DHW1
 		System.out.println();
 		print(board2);
 		
-		char[][] b2 = { {'a', 'b'}, {'c', 'd'} };
-		print(b2);
-		
-		System.out.println("\n");
+		System.out.println("\nPrinting rows 2 & 4");
+		printRow(board2, 2); System.out.println();
 		printRow(board2, 4);
-		printRow(board2, 9);
 		
-		System.out.println("\n");
-		printColumn(board2, 5);
+		System.out.println("\nPrinting columns -3 & 6");
+		printColumn(board2, -3); System.out.println();
+		printColumn(board2, 6);
 
 	}
 }

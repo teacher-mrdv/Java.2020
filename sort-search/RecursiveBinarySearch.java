@@ -6,8 +6,24 @@ public class RecursiveBinarySearch
 	
 	public static int recursiveBinarySearch(int[] a, int key, int first, int last ) // recursive version
 	{
-		// more code...
-		return -1;
+		recursiveCalls++;
+		int middle = (first + last) / 2;
+		//System.out.printf("First: %d \tMiddle: %d\tLast: %d\n", first, middle, last);
+		if( first >= last )
+		{
+			return -1;
+		} else if( a[middle] == key )
+		{
+			return middle;
+		} else if( key < a[middle] )
+		{
+			return recursiveBinarySearch(a, key, first, middle - 1);
+		} else if( key > a[middle] )
+		{
+			return recursiveBinarySearch(a, key, middle + 1, last);
+		} else {
+			return -1;
+		}
 	}
 	
 	public static void main(String[] args)
@@ -20,19 +36,8 @@ public class RecursiveBinarySearch
 		
 		int n , location;
 		Scanner inputInt = new Scanner(System.in);
-		for(int i = 0; i < 3; i++) // to test a few cases...
+		for(int i = 0; i < 4; i++) // to test a few cases...
 		{
-			System.out.println("\nSequential search: ");
-			printArray(random);
-			System.out.print("Input a number to search: ");
-			n = inputInt.nextInt(); // input a number
-			location = linearSearch(random, n);
-			if(location == -1)
-			{	System.out.println( n+" not found." );
-			} else {
-				System.out.println( n+" found at index " + location );
-			}
-
 			System.out.println("\nBinary search: "); // array must be sorted
 			printArray(ascending);
 			System.out.print("Input a number to search: ");
@@ -45,6 +50,10 @@ public class RecursiveBinarySearch
 			}
 			System.out.println( "\nRecursive Binary search:" );
 			recursiveCalls = 0;
+			/* if( key < ascending[0] || key > ascending[ascending.length] )
+					location = -1;
+				else
+			*/
 			location = recursiveBinarySearch(ascending, n, 0, ascending.length);
 			System.out.println("\tRecursive Calls = " + recursiveCalls);
 			if(location == -1)
@@ -65,23 +74,7 @@ public class RecursiveBinarySearch
 		System.out.println();
 	}
 	
-	public static int linearSearch(int[] a, int key) // key = element that we are looking for
-	{	int counter = 0; // optional
-		boolean found = false; // flag
-		int index = 0;
-		int location = -1; // -1 if not found
-		while( !found && index < a.length)
-		{	if( a[index] == key)
-			{	found = true;
-				location = index;
-			}
-			index++;
-			counter++; // count each comparison
-		}
-		System.out.println("Steps: " + counter); // optional
-		return location;
-	}
-	
+	// iterative version of the binary search
 	public static int binarySearch(int[] a, int key) // O(log2 n) -- iterative (loop) version
 	{	int counter = 0;
 		int location = -1;

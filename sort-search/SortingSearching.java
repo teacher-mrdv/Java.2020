@@ -256,7 +256,7 @@ public class SortingSearching
 	{
 		recursiveCalls++;
 		int middle = (first + last) / 2 ;
-		//System.out.printf("First %d\tMiddle %d\tLast %d\n", first, middle, last);
+		System.out.printf("First %d\tMiddle %d\tLast %d\n", first, middle, last);
 		if( a[ middle ] == key )		// find the key
 		{
 			return middle;
