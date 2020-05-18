@@ -76,7 +76,6 @@ public class Array2DHW1
 		}
 		if( col >= rowLength )		// roll over if it's too large, assuming all rows have same number of columns
 		{	col = (col % a[0].length);
-			System.out.println("\t"+col);
 		}
 		for(int row = 0; row < rowLength; row++)
 		{
