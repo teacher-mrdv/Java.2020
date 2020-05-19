@@ -54,7 +54,7 @@ public class Array2DHW1
 	
 	public static boolean printRow(char[][] a, int row)
 	{
-		if( row >= 0 && row < a.length)
+		if( a != null && row >= 0 && row < a.length)
 		{
 			int columnLength = a[row].length;	// number of columns in a row
 			for(int col = 0; col < columnLength; col++)
@@ -74,7 +74,8 @@ public class Array2DHW1
 		if( col < 0 )				// make sure it's positive
 		{	col = (int)Math.abs(col);
 		}
-		if( col >= rowLength )		// roll over if it's too large, assuming all rows have same number of columns
+		// roll over if it's too large, assuming all rows have same number of columns
+		if( col >= rowLength )
 		{	col = (col % a[0].length);
 		}
 		for(int row = 0; row < rowLength; row++)
