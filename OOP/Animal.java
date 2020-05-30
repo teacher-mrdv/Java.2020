@@ -1,15 +1,20 @@
 // Zoo
 
-public class Animal // generic, concept or definition of an animal
+public class Animal // BLUEPRINT - recipe, generic, concept or definition of an animal
 {
-	String species;	// data to capture about 'the animal' = ATTRIBUTES / FIELDS
+	// data to capture about 'the animal' = ATTRIBUTES / FIELDS / PROPERTIES / INSTANCE VARIABLES (object)
+	String species;
 	char gender;
 	String dob;
 	String name;
 	
-	// methods
+	static int counter; // static means only 1 copy of the variable which belongs to the class; CLASS VARIABLE
+	
+	
+	// methods = actions, behaviours, methods
 	public Animal()	// empty constructor (default if none written, must be written if a custom one is present)
-	{ }
+	{	counter++;
+	}
 	
 	public Animal(String s, char g, String d, String n)	// custom constructor
 	{
@@ -17,28 +22,22 @@ public class Animal // generic, concept or definition of an animal
 		gender = g;
 		dob = d;
 		name = n;
+		counter++;
+	}
+	
+	public static void hi()
+	{
+		System.out.println("HI");
 	}
 	
 	public String print()
 	{	return name;
 	}
 	
-	// for testing purposes
-	public static void main (String[] args)
-	{	// declaration   instantiation
-		Animal monkey  = new Animal();		// monkey = object
-		monkey.species = "Ape";
-		monkey.gender = 'M';
-		monkey.dob = "2/4/2002";
-		monkey.name = "Bobo";
-		System.out.println(monkey.species);
-		System.out.println(monkey.gender);
-		System.out.println(monkey.dob);
-		System.out.println(monkey.name);
-		monkey.print();
-		
-		Animal fish = new Animal("Fish", 'F', "5/8/2019", "Nemo");
-		System.out.println(fish);
+	public void die()
+	{
+		counter--;
 	}
+
 }
 
