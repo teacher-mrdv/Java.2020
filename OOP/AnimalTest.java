@@ -30,6 +30,7 @@ public class AnimalTest
 		System.out.println(monkey.name);
 
 		System.out.println(Animal.counter);
+
 		
 	}
 }

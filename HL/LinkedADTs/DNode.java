@@ -6,7 +6,7 @@ public class DNode
 
 	public DNode() {	}	// empty constructor
 	
-	public DNode(int n)		// constructor method instantiates (creates) + initialising the node
+	public DNode(int n)		// constructor method instantiates (creates) + initialises the node
 	{
 		previous = null;
 		data = n;
