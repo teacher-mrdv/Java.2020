@@ -1,4 +1,15 @@
-
+/*
+ * Collection class
+ * 
+ * Collection of elements - implementation of
+ * chapter 4 collections [pseudocode level]
+ * for practice and testing
+ * 
+ * note that a counter may be added as a member/attribute
+ * to keep track of the size of the collection
+ * 
+ */
+ 
 public class Collection
 {
 	Element start;

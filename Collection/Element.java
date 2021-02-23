@@ -1,4 +1,9 @@
 /*
+ * Element class
+ * component element of a collection
+ * this is done at pseudocode level, but
+ * it's good for testing and practice
+ * 
  */
 
 
